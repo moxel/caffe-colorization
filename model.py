@@ -1,7 +1,6 @@
 import numpy as np
 import os
 import skimage.color as color
-import matplotlib.pyplot as plt
 import scipy.ndimage.interpolation as sni
 import caffe
 import argparse
@@ -27,7 +26,7 @@ class Model(object):
         self.caffemodel = './models/colorization_release_v2.caffemodel'
         self.cluster = './resources/pts_in_hull.npy'
 
-        net = caffe.Net(prototxt, caffemodel, caffe.TEST)
+        net = caffe.Net(self.prototxt, self.caffemodel, caffe.TEST)
         (H_in,W_in) = net.blobs['data_l'].data.shape[2:] # get input shape
         (H_out,W_out) = net.blobs['class8_ab'].data.shape[2:] # get output shape
 
@@ -35,6 +34,7 @@ class Model(object):
         net.params['class8_ab'][0].data[:,:,0,0] = pts_in_hull.transpose((1,0)) # populate cluster centers as 1x1 convolution kernel
 
         def predict(img_in):
+            img_rgb = img_in
             img_lab = color.rgb2lab(img_rgb) # convert image to lab color space
             img_l = img_lab[:,:,0] # pull out L channel
             (H_orig,W_orig) = img_rgb.shape[:2] # original image size
@@ -65,7 +65,7 @@ class Model(object):
         self.predict = predict
         self.includes = [
             self.prototxt,
-            self.caffemodel
+            self.caffemodel,
             self.cluster
         ]
 

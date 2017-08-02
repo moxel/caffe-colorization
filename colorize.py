@@ -1,6 +1,8 @@
 import numpy as np
 import os
 import skimage.color as color
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import scipy.ndimage.interpolation as sni
 import caffe
