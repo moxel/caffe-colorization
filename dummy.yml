@@ -18,4 +18,4 @@ output_space:
   img_out: image.base64
 cmd:
 - pip install -r requirements.txt
-- python server_model.py
+- python serve_model.py

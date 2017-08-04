@@ -3,8 +3,8 @@ import base64
 import os
 import simplejson.scanner
 
-# URL = 'http://kube-dev.dummy.ai:31900/model/dummy/tf-object-detection/latest'
-URL = 'http://localhost:5900'
+URL = 'http://kube-dev.dummy.ai:31900/model/strin/colorization/0.0.1'
+# URL = 'http://localhost:5900'
 
 
 with open('demo/imgs/ansel_adams3.jpg', 'rb') as f:
