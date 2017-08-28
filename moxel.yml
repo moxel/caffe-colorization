@@ -1,9 +1,4 @@
-name: colorization
-title: Image Colorization
-tag: latest
-description: An image colorization model based on caffe
 image: dummyai/py3-caffe-cpu
-work_path: .
 assets:
 - ./models/colorization_deploy_v2.prototxt
 - ./models/colorization_release_v2.caffemodel
@@ -11,11 +6,10 @@ assets:
 resources:
   memory: 512Mi
   cpu: "1"
-labels: ["caffe", "computer vision"]
 input_space:
-  img_in: image.base64
+  img_in: Image
 output_space:
-  img_out: image.base64
+  img_out: Image
 cmd:
 - pip install -r requirements.txt
 - python serve_model.py

@@ -1,0 +1,14 @@
+image: dummyai/py3-caffe-cpu
+assets:
+- ./models/colorization_deploy_v2.prototxt
+- ./resources/pts_in_hull.npy
+resources:
+  memory: 512Mi
+  cpu: "1"
+input_space:
+  img_in: Image
+output_space:
+  img_out: Image
+cmd:
+- pip install -r requirements.txt
+- python serve_model.py

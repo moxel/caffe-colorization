@@ -3,13 +3,13 @@ import base64
 import os
 import simplejson.scanner
 
-URL = 'http://kube-dev.dummy.ai:31900/model/strin/colorization/0.0.1'
+URL = 'http://dev.dummy.ai/model/jimfan/colorization/0.0.1'
 # URL = 'http://localhost:5900'
 
 
 with open('demo/imgs/ansel_adams3.jpg', 'rb') as f:
     result = requests.post(URL, json={
-        'img_in': base64.b64encode(f.read()).decode('utf-8')
+        'img_in': ease64.b64encode(f.read()).decode('utf-8')
     })
 
     try:
