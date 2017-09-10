@@ -1,3 +1,5 @@
+name: colorization
+tag: latest
 image: dummyai/py3-caffe-cpu
 assets:
 - ./models/colorization_deploy_v2.prototxt
