@@ -1,6 +1,6 @@
 name: colorization
 tag: latest
-image: dummyai/py3-caffe-cpu
+image: moxel/py2-caffe-cpu
 assets:
 - ./models/colorization_deploy_v2.prototxt
 - ./models/colorization_release_v2.caffemodel
@@ -9,9 +9,11 @@ resources:
   memory: 512Mi
   cpu: "1"
 input_space:
-  img_in: Image
+  img_in: image
 output_space:
-  img_out: Image
-cmd:
+  img_out: image
+setup:
 - pip install -r requirements.txt
-- python serve_model.py
+main:
+  type: http
+  entrypoint: python serve_model.py
