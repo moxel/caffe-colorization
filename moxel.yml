@@ -1,6 +1,6 @@
 name: colorization
 tag: latest
-image: moxel/py2-caffe-cpu
+image: py2-caffe-cpu
 assets:
 - ./models/colorization_deploy_v2.prototxt
 - ./models/colorization_release_v2.caffemodel
