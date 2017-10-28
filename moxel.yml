@@ -1,6 +1,6 @@
 name: colorization
 tag: latest
-image: py2-caffe-cpu
+image: py2-caffe
 assets:
 - ./models/colorization_deploy_v2.prototxt
 - ./models/colorization_release_v2.caffemodel
@@ -15,5 +15,5 @@ output_space:
 setup:
 - pip install -r requirements.txt
 main:
-  type: http
-  entrypoint: python serve_model.py
+  type: python
+  entrypoint: serve.py::predict

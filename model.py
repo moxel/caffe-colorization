@@ -55,11 +55,9 @@ class Model(object):
             ab_dec = net.blobs['class8_ab'].data[0,:,:,:].transpose((1,2,0)) # this is our result
             ab_dec_us = sni.zoom(ab_dec,(1.*H_orig/H_out,1.*W_orig/W_out,1)) # upsample to match size of original image L
             img_lab_out = np.concatenate((img_l[:,:,np.newaxis],ab_dec_us),axis=2) # concatenate with original image L
-            img_rgb_out = (255*np.clip(color.lab2rgb(img_lab_out),0,1)).astype('uint8') # convert back to rgb
+            img_rgb_out = np.clip(color.lab2rgb(img_lab_out),0,1)
 
-            return {
-                'img_out': img_rgb_out
-            }
+            return img_rgb_out
 
         # dummyai configuration.
         self.predict = predict
